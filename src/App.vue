@@ -125,7 +125,7 @@ export default {
     }
   },
   created() {
-    setTimeout(this.incrementValue, 2000);
+    setTimeout(this.incrementValue, 10000);
   },
   mounted() {
     let c = document.getElementById("c");
