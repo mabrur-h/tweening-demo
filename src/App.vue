@@ -24,6 +24,15 @@
       </div>
       <canvas ref="canvas" id="c" class="progress"></canvas>
     </figure>
+
+
+    <div class="all-images" style="display: none; visibility: hidden">
+      <img v-for="i in 399" :key="i"
+          :width="250"
+          :src="`/asian/${i+1}.jpg`"
+          class="frame"/>
+    </div>
+
   </div>
 </template>
 
@@ -37,7 +46,7 @@ export default {
   },
   data() {
     return {
-      raf: null,
+      ref: null,
       mdown: false,
       mPos: {
         x: 0,
