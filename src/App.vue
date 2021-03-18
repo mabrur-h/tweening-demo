@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img :width="250" :src="`/asian/${sliderValue}.jpg`" class="frame"/>
+    <img :width="250" :src="`/asian/${Math.abs(sliderValue-400)}.jpg`" class="frame"/>
     <figure class="dial">
       <round-slider
           class="rangeSlider"
@@ -11,7 +11,6 @@
           :radius="radius"
           :start-angle="startAngle"
           pathColor="transparent"
-          animation="true"
           rangeColor="transparent"
           :change="changeRange()"
           line-cap="butt"
@@ -121,7 +120,7 @@ export default {
         if (this.sliderValue >= 40 && this.sliderValue <= 400) {
           this.sliderValue--
         }
-      },1000);
+      },66);
     }
   },
   created() {
@@ -135,6 +134,9 @@ export default {
 }
 </script>
 <style>
+.rs-animation .rs-transition {
+  transition: none !important;
+}
 .rangeSlider {
   position: absolute;
   margin-top: 40px;
