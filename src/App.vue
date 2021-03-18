@@ -5,8 +5,8 @@
 
       <div class="vent-outer">
           <div v-for="i in 80" :key="i">
-              <div v-if="i*4.5 < sliderValue / 1.11"
-                      class="vent" :style="`transform: rotate(${4.5*(i+1)}deg) translate(160px) rotate(90deg);`">
+              <div v-if="i*6 < sliderValue / 1.11"
+                      class="vent" :style="`transform: rotate(${6*(i+1)}deg) translate(160px) rotate(90deg);`">
               </div>
           </div>
       </div>
