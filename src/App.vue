@@ -119,7 +119,7 @@ export default {
     },
     incrementValue(val) {
       setInterval(() => {
-        if (this.sliderValue >= 40 && this.sliderValue <= 400) {
+        if (this.sliderValue >= 40 && this.sliderValue <= 360) {
           this.sliderValue--
         }
       },66);
