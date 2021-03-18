@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img :width="250" :src="`/asian/${Math.abs(sliderValue-400)}.jpg`" class="frame"/>
+    <img :width="250" :src="`/asian/${Math.abs(sliderValue-399)}.jpg`" class="frame"/>
     <figure class="dial">
       <round-slider
           class="rangeSlider"
@@ -15,7 +15,9 @@
           :change="changeRange()"
           line-cap="butt"
       ></round-slider>
-      <div class="center"><span>{{ sliderValue }}</span></div>
+      <div class="center">
+          <span>{{ sliderValue }}</span>
+      </div>
       <div class="wrapper">
         <div class="knob"   :style="`transform: rotate(${sliderValue/1.12}deg)`">
           <div class="handle"></div>
