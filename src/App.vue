@@ -1,6 +1,15 @@
 <template>
   <div id="app">
     <img :width="250" :src="`/asian/${Math.abs(sliderValue-399)}.jpg`" class="frame"/>
+
+
+      <div class="vent-outer">
+          <div v-for="i in 80" :key="i">
+              <div v-if="i*4.5 < sliderValue / 1.11"
+                      class="vent" :style="`transform: rotate(${4.5*(i+1)}deg) translate(160px) rotate(90deg);`">
+              </div>
+          </div>
+      </div>
     <figure class="dial">
       <round-slider
           class="rangeSlider"
@@ -74,49 +83,8 @@ export default {
     changeRange() {
       // this.drawRect()
     },
-    drawRect() {
-      // draw rect
 
-      this.draw()
-    },
-    draw() {
 
-      var canvas = document.getElementById("canvas");
-      this.ctx = this.vueCanvas
-      this.ctx.height = 350;
-      this.ctx.width = 350;
-      let i, j, ref;
-
-      this.ctx.save();
-      this.ctx.translate(175, 175);
-      this.ctx.rotate((-90 * (Math.PI / 180)) - (Math.PI * 2 / this.steps));
-      for (i = j = 0, ref = this.steps - 1; j <= ref; i = j += 1) {
-        this.ctx.beginPath();
-        this.ctx.rotate(Math.PI * 2 / this.steps);
-        this.ctx.lineWidth = 2;
-        this.ctx.lineTo(160, 0);
-        this.ctx.lineTo(170, 0);
-        if (i <= Math.floor(this.sliderValue/6.66)) {
-          this.ctx.shadowBlur = 10;
-          this.ctx.strokeStyle = "#fff";
-          this.ctx.shadowColor = "#fff";
-          if (i > (this.steps * 0.75) && this.sliderValue/6.66 > (this.steps * 0.75)) {
-            this.ctx.strokeStyle = "#ff9306";
-            this.ctx.shadowColor = "#ff9306";
-          }
-          if (i > (this.steps * 0.88) && this.sliderValue/6.66 > (this.steps * 0.88)) {
-            this.ctx.strokeStyle = "#ff0606";
-            this.ctx.shadowColor = "#ff0606";
-          }
-        } else {
-          this.ctx.strokeStyle = "#444";
-          this.ctx.shadowBlur = 0;
-          this.ctx.shadowColor = "#fff";
-        }
-        this.ctx.stroke();
-      }
-      this.ctx.restore();
-    },
     incrementValue(val) {
       setInterval(() => {
         if (this.sliderValue >= 40 && this.sliderValue <= 360) {
@@ -138,6 +106,30 @@ export default {
 <style>
 .rs-animation .rs-transition {
   transition: none !important;
+}
+.vent-outer {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 50%;
+    margin-left: -240px;
+    margin-top: -10px;
+    transform: rotate(
+            265deg
+    );
+}
+.vent {
+    width: 2px;
+    height: 22px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px 0px rgb(0 0 0 / 50%) inset;
+    filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.4));
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-top: -11px;
+    margin-left: -5px;
 }
 .rangeSlider {
   position: absolute;
