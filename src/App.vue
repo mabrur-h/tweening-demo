@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <img :width="250" :src="`/asian/${Math.abs(sliderValue-399)}.jpg`" class="frame"/>
-
-
       <div class="vent-outer">
-          <div v-for="i in 80" :key="i">
+          <div v-for="i in 60" :key="i">
               <div v-if="i*6 < sliderValue / 1.11"
                       class="vent" :style="`transform: rotate(${6*(i+1)}deg) translate(160px) rotate(90deg);`">
               </div>
+            <div v-else-if="i*6 > sliderValue / 1.11"
+                 class="vent inactive" :style="`transform: rotate(${6*(i+1)}deg) translate(160px) rotate(90deg);`">
+            </div>
           </div>
       </div>
     <figure class="dial">
@@ -94,7 +95,7 @@ export default {
     }
   },
   created() {
-    setTimeout(this.incrementValue, 10000);
+    // setTimeout(this.incrementValue, 10000);
   },
   mounted() {
     let c = document.getElementById("c");
@@ -130,6 +131,11 @@ export default {
     left: 50%;
     margin-top: -11px;
     margin-left: -5px;
+}
+.vent.inactive {
+  background: #4c4c4c40;
+  box-shadow: 0 1px 3px 0px rgb(0 0 0 / 0%) inset;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.4));
 }
 .rangeSlider {
   position: absolute;
@@ -254,5 +260,15 @@ body {
   height: 120px;
 }
 
-
+.rs-handle::after {
+  content: "========";
+  color: transparent;
+  position: absolute;
+  width: 100px
+}
+.rs-handle::before {
+  content: "========";
+  color: transparent;
+  width: 100px
+}
 </style>
