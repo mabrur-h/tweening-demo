@@ -25,9 +25,9 @@
           :change="changeRange()"
           line-cap="butt"
       ></round-slider>
-      <div class="center">
-          <span>{{ sliderValue }}</span>
-      </div>
+<!--      <div class="center">-->
+<!--          <span>{{ sliderValue }}</span>-->
+<!--      </div>-->
       <div class="wrapper">
         <div class="knob"   :style="`transform: rotate(${sliderValue/1.12}deg)`">
           <div class="handle"></div>
@@ -95,7 +95,7 @@ export default {
     }
   },
   created() {
-    // setTimeout(this.incrementValue, 10000);
+    setTimeout(this.incrementValue, 10000);
   },
   mounted() {
     let c = document.getElementById("c");
